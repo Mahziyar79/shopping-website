@@ -1,11 +1,11 @@
-import Cards from "./Pages/Cards";
+import CartPage from "./Pages/CartPage";
 import HomePage from "./Pages/HomePage";
 import NotFoundPage from "./Pages/NotFoundPage";
 
 const routes = [
-    { path: "/cards", element: <Cards /> },
-    { path: "/", element: <HomePage />, exact: true },
-    { element: <NotFoundPage /> },
+    { path: "/cart", element: <CartPage /> },
+    { path: "/", element: <HomePage />},
+    { path:"*" , element: <NotFoundPage /> },
   ];
   
   export default routes;

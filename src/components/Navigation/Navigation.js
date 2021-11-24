@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 
 const items = [
-  { to: "/", name: "Home", exact: true },
-  { to: "/cards", name: "Cards" },
+  { to: "/", name: "Home" },
+  { to: "/cart", name: "Cart" },
 ];
 const Navigation = (props) => {
   return (
@@ -15,9 +15,7 @@ const Navigation = (props) => {
               <li key={item.to}>
                 <NavLink
                   to={item.to}
-                  className='nav-link'
-                  activeClassName="selected-nav"
-                  exact={item.exact || false}
+                  className={({ isActive }) => isActive? "active": ''}
                 >
                   {item.name}
                 </NavLink>
