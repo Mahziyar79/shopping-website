@@ -5,6 +5,7 @@ import Input from "../../common/Input";
 import { signupUser } from "../../services/signupService";
 import "./signup.css";
 import { toast } from "react-toastify";
+import { useAuthActions } from "../../Context/AuthProvider";
 
 const initialValues = {
   name: "",
@@ -40,7 +41,8 @@ const validationSchema = Yup.object({
 
 const SignUp = () => {
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const setAuth = useAuthActions()
 
   const onSubmit = async (values) => {
     const {name,email,phoneNumber,password} = values;
@@ -52,6 +54,7 @@ const SignUp = () => {
     }
     try {
       const {data} = await signupUser(userData);
+      setAuth(data);
       toast.success(`Welcome ${data.name}`)
       navigate('/')
     } catch (error) {

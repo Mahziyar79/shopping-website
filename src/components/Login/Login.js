@@ -5,6 +5,7 @@ import Input from "../../common/Input";
 import { loginService } from "../../services/loginService";
 import "./login.css";
 import { toast } from "react-toastify";
+import { useAuthActions } from "../../Context/AuthProvider";
 
 const initialValues = {
   email: "",
@@ -24,11 +25,13 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const setAuth = useAuthActions()
 
   const onSubmit = async(values) => {
     try {
       const {data} = await loginService(values);
+      setAuth(data);
       toast.success(`Welcome ${data.name}`)
       navigate('/')
     } catch (error) {
