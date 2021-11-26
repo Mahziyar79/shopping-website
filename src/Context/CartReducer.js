@@ -45,7 +45,7 @@ const cartReducer = (state, action) => {
 
     case "TOTAL_PRICE": {
       const updatedCart = [...state.cart];
-      const reducer = (accumulator, curr) => accumulator + (curr.price * curr.quantity);
+      const reducer = (accumulator, curr) => accumulator + (curr.offPrice * curr.quantity);
       const totalCartPrice = updatedCart.reduce(reducer,0);
       return {...state,total:totalCartPrice}
     }

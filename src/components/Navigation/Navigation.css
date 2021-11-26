@@ -29,3 +29,15 @@ header {
   color: blueviolet !important;
   border-radius: 3px;
 }
+.cart-nav{
+  position: relative;
+}
+.quantity-nav {
+	position: absolute;
+	top: -13px;
+	background: blueviolet;
+	color: #fff;
+	padding: 0 7px;
+	border-radius: 50%;
+	right: -10px;
+}

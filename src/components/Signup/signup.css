@@ -1,0 +1,85 @@
+.signup-btn {
+  cursor: pointer;
+  margin-left: 40px;
+  padding: 8px 25px;
+  background: transparent;
+  color: #fff;
+  border: 2px solid blueviolet;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+.signup-btn:hover {
+  color: #fff;
+  background-color: blueviolet;
+}
+.form-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
+  margin: 0 auto;
+  padding: 25px;
+  color: #fff;
+  border-radius: 10px;
+}
+.form-control {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  width: 100%;
+}
+.form-control input {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #cbcbcb;
+  margin-top: 5px;
+}
+.error-field {
+  color: red;
+  margin-top: 4px;
+}
+.form-signup button {
+  padding: 8px 30px;
+  margin-top: 15px;
+  background: blueviolet;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+.form-signup button:disabled {
+  padding: 9px 30px;
+  margin-top: 15px;
+  background: #ccc;
+  color: #444;
+  border: none;
+  border-radius: 4px;
+  cursor: not-allowed;
+  width: 100%;
+}
+.terms-label {
+  color: #363636;
+  margin-left: 5px;
+}
+.terms {
+  margin-top: 10px;
+  width: 100%;
+}
+.form-control label {
+  color: #333;
+}
+.isloggedin,.issignup {
+  color: #333;
+  margin-top: 10px;
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .form-signup {
+    width: 85%;
+  }
+  .terms {
+    width: 100%;
+  }
+}
