@@ -6,7 +6,6 @@ import "./Navigation.css";
 const Navigation = () => {
   const { cart } = useCart();
   const auth = useAuth();
-  console.log(auth);
   const sumQuantityNav = () => {
     const updatedCart = [...cart];
     const reducer = (accumulator, curr) => accumulator + curr.quantity;
@@ -39,7 +38,7 @@ const Navigation = () => {
             </li>
             <li>
               <NavLink
-                to="/login"
+                to={auth ? "/profile" : "/login"}
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
                 {auth ? "Profile" : "Login/Signup"}

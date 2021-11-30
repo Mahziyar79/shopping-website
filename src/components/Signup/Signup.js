@@ -5,7 +5,9 @@ import Input from "../../common/Input";
 import { signupUser } from "../../services/signupService";
 import "./signup.css";
 import { toast } from "react-toastify";
-import { useAuthActions } from "../../Context/AuthProvider";
+import { useAuth, useAuthActions } from "../../Context/AuthProvider";
+import { useQuery } from "../../hooks/useQuery";
+import { useEffect } from "react/cjs/react.development";
 
 const initialValues = {
   name: "",
@@ -38,11 +40,18 @@ const validationSchema = Yup.object({
     .oneOf([Yup.ref("password"), null], "Passwords must match"),
   terms: Yup.boolean().oneOf([true], "Must Accept Terms and Conditions"),
 });
-
 const SignUp = () => {
-
+  
   const navigate = useNavigate();
   const setAuth = useAuthActions()
+  const auth = useAuth()
+
+  const query = useQuery();
+  const redirect = query.get('redirect') || "/";
+
+  useEffect(()=>{
+    if(auth) navigate(redirect);
+  },[auth,redirect])
 
   const onSubmit = async (values) => {
     const {name,email,phoneNumber,password} = values;
@@ -56,7 +65,7 @@ const SignUp = () => {
       const {data} = await signupUser(userData);
       setAuth(data);
       toast.success(`Welcome ${data.name}`)
-      navigate('/')
+      navigate(redirect);
     } catch (error) {
       toast.error(`${error.response.data.message}`)
     }
@@ -105,7 +114,7 @@ const SignUp = () => {
         <button type="submit" disabled={!formik.isValid}>
           Sign Up
         </button>
-        <Link to="/login" className="isloggedin">
+        <Link to={`/login?redirect=${redirect}`} className="isloggedin">
           <p>Already Login ?</p>
         </Link>
       </form>

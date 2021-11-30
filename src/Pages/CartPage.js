@@ -87,7 +87,7 @@ const CartPage = () => {
               <p>{total} $</p>
             </div>
           </section>
-          <Link to='/checkout'>
+          <Link to='/signup?redirect=/checkout'>
           <button className='checkout-btn'>Go to Checkout</button>
           </Link>
         </section>

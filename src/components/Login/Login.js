@@ -5,7 +5,9 @@ import Input from "../../common/Input";
 import { loginService } from "../../services/loginService";
 import "./login.css";
 import { toast } from "react-toastify";
-import { useAuthActions } from "../../Context/AuthProvider";
+import { useAuth, useAuthActions } from "../../Context/AuthProvider";
+import { useQuery } from "../../hooks/useQuery";
+import { useEffect } from "react/cjs/react.development";
 
 const initialValues = {
   email: "",
@@ -27,13 +29,22 @@ const validationSchema = Yup.object({
 const Login = () => {
   const navigate = useNavigate();
   const setAuth = useAuthActions()
+  const auth = useAuth();
+
+  const query = useQuery();
+  const redirect = query.get('redirect') || "/";
+
+  useEffect(()=>{
+    if(auth) navigate(redirect);
+  },[auth,redirect])
 
   const onSubmit = async(values) => {
     try {
       const {data} = await loginService(values);
       setAuth(data);
+      navigate(redirect)
       toast.success(`Welcome ${data.name}`)
-      navigate('/')
+      
     } catch (error) {
       toast.error(`${error.response.data.message}`)
     }
@@ -58,7 +69,7 @@ const Login = () => {
         <button type="submit" disabled={!formik.isValid}>
           Login
         </button>
-        <Link to='/signup' className="issignup">
+        <Link to={`/signup?redirect=/${redirect}`} className="issignup">
           <p>Not Signup yet ?</p>
         </Link>
       </form>
