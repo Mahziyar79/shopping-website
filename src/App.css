@@ -120,3 +120,38 @@
 	margin-top: 20px;
 	cursor: pointer;
 }
+
+@media (max-width: 992px) {
+  .cart-container,.cartItem {
+    flex-direction: column;
+  }
+  .summery-section,.cart-section{
+    width: 90%;
+    margin: 0 auto;
+  }
+  .cart-title,.cart-price,.cart-changes {
+    margin: 5px 0;
+  }
+}
+
+
+/***************** checkout Page  ***********************/
+.checkout-section{
+  display: flex;
+  flex-direction: column;
+	align-items: flex-start;
+	background: #f7f7f7;
+	margin-bottom: 15px;
+	padding: 10px 0 10px 15px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+}
+.checkout-section p{
+  margin: 6px 0;
+}
+section.summery-checkout div {
+  margin: 0 0 10px 0;
+}
+.total-checkout{
+  margin-top: 10px !important;
+}

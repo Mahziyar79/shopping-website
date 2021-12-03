@@ -69,7 +69,7 @@ const Login = () => {
         <button type="submit" disabled={!formik.isValid}>
           Login
         </button>
-        <Link to={`/signup?redirect=/${redirect}`} className="issignup">
+        <Link to={`/signup?redirect=${redirect}`} className="issignup">
           <p>Not Signup yet ?</p>
         </Link>
       </form>

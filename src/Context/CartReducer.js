@@ -50,6 +50,14 @@ const cartReducer = (state, action) => {
       return {...state,total:totalCartPrice}
     }
 
+    case "ADD_PRODUCT_LOCALSTORAGE": {
+      const userData = JSON.parse(localStorage.getItem("cartItems")) || {
+        cart : [] ,
+        total : 0
+    };
+      return userData
+    }
+
     default:
       return state;
   }

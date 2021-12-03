@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../Context/AuthProvider";
 import { useCart } from "../../Context/CartProvider";
+import ProfileBtn from "../ProfileBtn/ProfileBtn";
 import "./Navigation.css";
 
 const Navigation = () => {
@@ -36,13 +37,17 @@ const Navigation = () => {
               </NavLink>
               <span className="quantity-nav">{sumQuantityNav()}</span>
             </li>
-            <li>
-              <NavLink
-                to={auth ? "/profile" : "/login"}
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                {auth ? "Profile" : "Login/Signup"}
-              </NavLink>
+            <li className={auth ? "Profile-btn" : ""}>
+              {auth ? (
+                <ProfileBtn />
+              ) : (
+                <NavLink
+                  to={"/login"}
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  {"Login/Signup"}
+                </NavLink>
+              )}
             </li>
           </div>
         </ul>

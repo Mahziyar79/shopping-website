@@ -1,15 +1,10 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart, useCartActions } from "../Context/CartProvider";
 import Layout from "../Layout/Layout";
 
 const CartPage = () => {
-  const { cart, total } = useCart();
+  const { cart } = useCart();
   const dispatch = useCartActions();
-
-  useEffect(() => {
-    dispatch({ type: "TOTAL_PRICE" });
-  }, []);
 
   const increaseProductHandler = (item) => {
     dispatch({ type: "ADD_PRODUCT", payload: item });
@@ -22,6 +17,9 @@ const CartPage = () => {
 
   const originalPrice = () => {
     return cart.reduce((acc,curr) => acc + (curr.quantity * curr.price),0)
+  }
+  const netPrice = () => {
+    return cart.reduce((acc,curr) => acc + (curr.quantity * curr.offPrice),0);
   }
 
 
@@ -79,12 +77,12 @@ const CartPage = () => {
             </div>
             <div>
               <p>Cart Discount</p>
-              <p>{originalPrice() - total} $</p>
+              <p>{originalPrice() - netPrice()} $</p>
             </div>
             <hr />
             <div>
               <p>Net Price</p>
-              <p>{total} $</p>
+              <p>{netPrice()} $</p>
             </div>
           </section>
           <Link to='/signup?redirect=/checkout'>

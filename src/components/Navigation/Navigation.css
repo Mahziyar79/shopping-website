@@ -29,18 +29,26 @@ header {
   color: blueviolet !important;
   border-radius: 3px;
 }
-.cart-nav{
+.cart-nav {
   position: relative;
 }
 .quantity-nav {
-	position: absolute;
-	top: -13px;
-	background: blueviolet;
-	color: #fff;
-	padding: 0 7px;
-	border-radius: 50%;
-	right: -10px;
+  position: absolute;
+  top: -13px;
+  background: blueviolet;
+  color: #fff;
+  padding: 0 7px;
+  border-radius: 50%;
+  right: -10px;
 }
-.right-nav{
+.right-nav {
   display: flex;
+  align-items: center;
+}
+li.Profile-btn div button {
+  font-family: "Poppins", sans-serif !important;
+  color: #574a9f;
+}
+li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  padding: 10px 30px;
 }
